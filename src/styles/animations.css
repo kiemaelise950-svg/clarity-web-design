@@ -1,0 +1,110 @@
+/* ===== Animations ===== */
+
+/* ── Keyframes ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+/* ── Reveal Classes (for IntersectionObserver) ── */
+.reveal {
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.reveal--up { transform: translateY(40px); }
+.reveal--left { transform: translateX(-40px); }
+.reveal--right { transform: translateX(40px); }
+.reveal--scale { transform: scale(0.95); }
+
+.reveal.active {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* ── Staggered Children ── */
+.stagger > * {
+  opacity: 0;
+}
+
+.stagger.active > *:nth-child(1) { animation: slideUp 0.6s forwards 0.1s; }
+.stagger.active > *:nth-child(2) { animation: slideUp 0.6s forwards 0.2s; }
+.stagger.active > *:nth-child(3) { animation: slideUp 0.6s forwards 0.3s; }
+.stagger.active > *:nth-child(4) { animation: slideUp 0.6s forwards 0.4s; }
+.stagger.active > *:nth-child(5) { animation: slideUp 0.6s forwards 0.5s; }
+.stagger.active > *:nth-child(6) { animation: slideUp 0.6s forwards 0.6s; }
+
+/* ── Hover Effects ── */
+.hover-float {
+  transition: transform var(--transition-normal);
+}
+
+.hover-float:hover {
+  transform: translateY(-8px);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-glow-accent);
+}
+
+/* ── Utilities ── */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
